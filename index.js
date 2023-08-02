@@ -14,9 +14,7 @@ require('dotenv').config() // Pour les variable d'environnement
 const app = express();
 
 // Connexion à la DB
-mongoose.connect(process.env.MONGO_DB,{
-    useNewUrlParser: true,
-});
+mongoose.connect(process.env.MONGO_DB);
 
 
 // Système pour upload avec la limite autoriser !
@@ -56,6 +54,9 @@ const secret = 'sfsf858g1e5e8zacve8s63z';
 app.use('/uploads', express.static(__dirname + '/uploads'))
 
 
+app.get('/', (req, res) => {
+    res.json('Home API')
+})
 
 // INSCRIPTION
 app.post('/register', async (req, res) => {
